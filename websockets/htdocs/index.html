@@ -1,0 +1,17 @@
+<!doctype html>
+<head>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+	var socket = io.connect();
+	socket.on('nachricht', function(o){
+		var el = document.getElementById('sio_placeholder');
+		el.textContent = el.textContent + o;
+	});
+</script>
+</head>
+<pre id="sio_placeholder"></pre>
+<br><br>
+<h3 style="font:arial;color:orange;"><br><br>MEEEINER!</h3>
+<br><br>
+<a href="gettime">Zeig mir die Zeit!</a>
+
