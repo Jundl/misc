@@ -1,8 +1,9 @@
 /**
-* node ES6 modul in node4.4.7: node versteht komplett kein ES6.
-* Daher wird babel als "Preprocessor" verwendet, der aus ES6 ES5 macht.
+* node ES6 modul 
+* node4.4.7 versteht komplett kein ES6.
+* Daher dazu babel als "Preprocessor" verwenden (ES6=>ES5)
 */
-export class TodoList{
+export default class TodoList{
 	constructor(){
 		this.list=[];
 	}
