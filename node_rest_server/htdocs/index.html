@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+	<!-- TODO: alles in arrow notation -->
+	<head>
+		<script src="http://singlepage.info/f/angularjs/angular.js"></script>
+		<script>
+
+				angular.module('AngTodo',[]).controller('ctrl',function($scope, $http){
+					$scope.myList={list:[]};
+					
+					$scope.add=()=>{
+						$http.post("/todos", $scope.newTodo);
+						delete $scope.newTodo;
+						refresh();
+					}
+
+					$scope.update=(idx)=>{
+						$http.put("/todos/" + idx, $scope.myList.list[idx]);				
+					}
+
+					$scope.cleanup=()=>{
+						$http.delete("/todos");
+						refresh();
+					}
+					
+					$scope.dump=()=>{
+						console.log($scope.myList);
+					}
+
+					refresh=()=>{
+						$http.get("/todos").success(function(result){
+							$scope.myList=result;
+						});
+					}
+					refresh();
+				});
+
+				// TODO: is das hier die ini?
+				angular.element(document).ready(function(){
+					angular.bootstrap(document,['AngTodo']);
+				});
+		</script>
+	</head>
+
+	<body data-ng-controller="ctrl" data-ng-cloak>
+		<pre>TODO LIST</pre>
+		<table>
+			<tr data-ng-repeat="todo in myList.list track by $index">
+				<td><span ng-bind="todo.text"></span></td>
+				<td><input type="checkbox" ng-model="todo.done" ng-click="update($index)"></td>
+			</tr>
+			<tr>
+				<td><input type="text" ng-model="newTodo.text"></td>
+				<td><button ng-disabled="!newTodo.text" ng-click="add()">insert</button></td>
+			</tr>
+		</table><br><br>
+		<button ng-click="dump()">loggen!</button>
+		<button ng-click="cleanup()">cleanup done entries</button>
+	</body>
+
+</html>
