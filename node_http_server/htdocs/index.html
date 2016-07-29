@@ -1,4 +1,28 @@
-<!doctype html>
-<h3 style="font:arial;color:orange;"><br><br>MEEEINER!</h3>
-<br><br>
-<a href="gettime">Zeig mir die Zeit!</a>
+<!Doctype html>
+<html>
+
+<head>
+    <script src="bundle.js"></script>
+    <script src="bundle2.js"></script>
+    <script>
+        alert('loaded');
+        __s = require('slugger');
+        __bus = require('bus');
+        __bus.on('message', function(msg){
+        alert(msg);
+        document.querySelector('#messages').innerHTML='<p>'+msg + '</p>';
+    });
+        
+//   var messagebus = new MessageBus();
+
+//   bundle.messagebus.emit('message', 'page load completed !');
+</script>
+
+</head>
+
+<body>
+    <div id="messages"></div>
+    <h2><script>document.write(__s('Message Bus Test'));</script></h2>
+</body>
+
+</html>
