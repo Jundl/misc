@@ -1,0 +1,24 @@
+{
+  "name": "mongo_selbst",
+  "version": "1.0.0",
+  "description": "selbst nachbauen",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "jade",
+    "mongo"
+  ],
+  "author": "jundl",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^4.5.8",
+    "readline": "^1.3.0",
+    "mongodb": "^2.2.5"	
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.0.0"
+  }
+}
