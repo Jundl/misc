@@ -42,3 +42,16 @@ jspm_packages
 
 # openSSL
 .rnd
+
+# eclipse 
+.classpath
+.project
+.settings
+
+# maven
+target
+
+*/.gitignore
+
+
+
